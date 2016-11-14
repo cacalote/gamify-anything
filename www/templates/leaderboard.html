@@ -1,0 +1,15 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable">
+    		<h1 class="title">{{modal.title}}</h1>
+        <button class="button button-icon icon ion-android-close dark" ng-click="hideModal()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item item-avatar" ng-repeat="user in modal.leaderboard | orderBy:reverse:true">
+                <img ng-src="{{profiles[user.$id].photo}}">
+                #{{$index + 1}}
+                <p>{{profiles[user.$id].name}} ({{user.$value}} points)</p>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,41 @@
+<ion-view>
+    <ion-content>
+        <div class="card list">
+            <div class="item item-avatar item-text-wrap">
+                <img ng-src="{{profiles[auth.uid].photo}}">
+                <h2 id="greeting">{{profiles[auth.uid].name}}, you have {{scores["Total Points"]}} points.</h2>
+                <p>You are the #{{rank}} player in the game.</p>
+            </div>
+			<div class="item item-icon-left balanced" ng-click="showModal('Total Points')">
+                <i class="icon ion-ios-arrow-forward"></i>
+                See the leaderboard
+            </div>
+        </div>
+        <div class="card list">
+            <div class="item item-icon-left" ng-click="showModal('Gold')">
+                <i class="icon ion-cash"></i>
+                {{scores["Gold"]}} Gold
+            </div>
+            <div class="item item-icon-left" ng-click="showModal('Energy')">
+                <i class="icon ion-ios-bolt"></i>
+                {{scores["Energy"]}} Energy
+            </div>
+            <div class="item item-icon-left" ng-click="showModal('Intellect')">
+                <i class="icon ion-ios-lightbulb"></i>
+                {{scores["Intellect"]}} Intellect
+            </div>
+            <div class="item item-icon-left" ng-click="showModal('Social')">
+                <i class="icon ion-ios-people"></i>
+                {{scores["Social"]}} Social
+            </div>
+            <div class="item item-icon-left" ng-click="showModal('Stolen by Me')">
+                <i class="icon ion-arrow-left-c"></i>
+                {{scores["Stolen by Me"]}} Stolen by Me
+            </div>
+            <div class="item item-icon-left" ng-click="showModal('Stolen from Me')">
+                <i class="icon ion-arrow-right-c"></i>
+                {{scores["Stolen from Me"]}} Stolen from Me
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

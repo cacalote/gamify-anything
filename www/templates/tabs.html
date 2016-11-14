@@ -1,0 +1,15 @@
+<ion-header-bar class="bar-positive">
+	<h1 class="title">Gamify Anything</h1>
+	<button class="button button-light button-outline" ng-click="signOut()">Log out</button>
+</ion-header-bar>
+<ion-tabs ng-class="{'tabs-positive': android}">
+    <!-- Dashboard Tab -->
+    <ion-tab title="Dashboard" href="#/tab/dashboard">
+        <ion-nav-view name="tab-dashboard"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Activities Tab -->
+    <ion-tab title="Activities" href="#/tab/activities">
+        <ion-nav-view name="tab-activities"></ion-nav-view>
+    </ion-tab>
+</ion-tabs>

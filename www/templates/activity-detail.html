@@ -1,0 +1,42 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-stable">
+		<h1 class="title">{{modal.activity.$id}}</h1>
+		<button class="button button-icon icon ion-android-close dark" ng-click="hideModal()"></button>
+	</ion-header-bar>
+	<ion-content>
+		<div class="list">
+			<div class="item item-text-wrap"><span class="bold">Instructions:</span> {{modal.activity.instructions}}</div>
+			<div class="item item-text-wrap"><span class="bold">Point Type:</span> {{modal.activity.type}}</div>
+			<div class="item item-text-wrap"><span class="bold">Max. Frequency:</span> {{modal.activity.frequency}}</div>
+			<div class="item item-text-wrap"><span class="bold">Min. Participants:</span> {{modal.activity.participants}}</div>
+			<div ng-repeat="(key, question) in modal.activity.questions">
+				<div ng-if="question.type == 'photo'" class="item item-icon-right" ng-click="getImage(key)">
+					<span class="bold" ng-if="modal.progress == null">{{question.text}}</span>
+					<span class="bold" ng-if="modal.progress != null">{{modal.progress}}</span>
+					<i class="icon" ng-class="{'ion-camera': modal.answers[key] == null, 'ion-ios-checkmark-outline': modal.answers[key] != null}"></i>
+				</div>
+				<label ng-if="question.type == 'input'" class="item item-input input-special">
+					<span class="input-label bold">{{question.text}}</span>
+					<input type="text" ng-model="modal.answers[key]">
+				</label>
+				<label ng-if="question.type == 'select'" class="item item-input item-select input-special">
+					<div class="input-label bold">{{question.text}}</div>
+					<select ng-model="modal.answers[key]">
+						<option ng-repeat="(value, option) in question.options" ng-value="value">{{option}}</option>
+					</select>
+				</label>
+			</div>
+			<div class="item item-text-wrap" id="feedback">
+				<span class="bold">Feedback:</span>
+				<i class="icon star energized" ng-class="{'ion-android-star-outline': modal.stars == null, 'ion-android-star': modal.stars > 0}" ng-click="modal.stars = 1"></i>
+				<i class="icon star energized" ng-class="{'ion-android-star-outline': modal.stars <= 1 || modal.stars == null, 'ion-android-star': modal.stars > 1}" ng-click="modal.stars = 2"></i>
+				<i class="icon star energized" ng-class="{'ion-android-star-outline': modal.stars <= 2 || modal.stars == null, 'ion-android-star': modal.stars > 2}" ng-click="modal.stars = 3"></i>
+				<i class="icon star energized" ng-class="{'ion-android-star-outline': modal.stars <= 3 || modal.stars == null, 'ion-android-star': modal.stars > 3}" ng-click="modal.stars = 4"></i>
+				<i class="icon star energized" ng-class="{'ion-android-star-outline': modal.stars <= 4 || modal.stars == null, 'ion-android-star': modal.stars > 4}" ng-click="modal.stars = 5"></i>
+			</div>
+		</div>
+		<div class="padding-horizontal">
+			<button class="button button-outline button-balanced button-block" ng-click="completeActivity()">Done</button>
+		</div>
+	</ion-content>
+</ion-modal-view>

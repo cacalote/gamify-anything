@@ -1,0 +1,15 @@
+<ion-view>
+    <ion-content>
+        <div class="card list" ng-repeat="activity in activities">
+            <div class="item item-icon-left">
+                <i class="icon" ng-class="{'{{activity.icon}}': true}"></i>
+                {{activity.$id}}
+                <p>{{activity.type}}</p>
+            </div>
+            <div class="item item-icon-left balanced" ng-click="showModal(activity)">
+                <i class="icon ion-ios-arrow-forward"></i>
+                Perform
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
